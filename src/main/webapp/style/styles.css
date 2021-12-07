@@ -1,0 +1,154 @@
+.header {
+    width: auto;
+    height: 50px;
+    background: #989898;
+}
+
+#left_header {
+    float: left;
+    alignment: center;
+
+}
+
+#left_header_logo {
+    font-family: SansSerif, serif;
+    font-size: 30pt;
+    color: #ffffff;
+    margin-left: 10px;
+    text-decoration: none;
+
+}
+
+#right_header {
+    float: right;
+    display: inline-block;
+    height: 50px;
+
+}
+
+.in_line_button {
+    font-size: 12pt;
+    background: #6b6b6b;
+    color: white;
+    padding: 5px 10px;
+    margin: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.in_line_button:hover {
+    background: #464646;
+}
+
+.language_button {
+    font-size: 8pt;
+    background: #6b6b6b;
+    color: white;
+    padding: 5px 10px;
+    margin: 13px;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+}
+
+.language_button:hover {
+    background: #464646;
+}
+
+.float_right {
+    float: right;
+
+}
+
+.main {
+    margin-top: -29px;
+    width: 1280px;
+    background: #c4c4c4;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: calc(100vh - 90px);
+}
+.main_top {
+    width: 1280px;
+}
+
+.left_top {
+    float: left;
+    width: 640px;
+    height: 427px;
+    align-content: center;
+    margin-bottom: 50px;
+
+}
+.motto {
+    margin: 60px 30px;
+    text-align: center;
+    border-radius: 20px;
+    font-family: SansSerif, serif;
+    font-size: 20pt;
+    color: white;
+    background: #989898;
+
+
+}
+
+.big_button {
+    font-size: 20pt;
+    background: #6b6b6b;
+    color: white;
+    padding: 4px 10px;
+    margin: 30px;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+}
+.big_button:hover {
+    background: #464646;
+}
+.alignment_center {
+    text-align: center;
+}
+.right_top {
+    float: right;
+    width: 640px;
+    height: 427px;
+    margin-bottom: 50px;
+}
+
+.big_table_container {
+    width: 1280px;
+    border-radius: 20px;
+    padding-bottom: 100px;
+}
+
+.main_table_head {
+    text-align: center;
+    font-size: 22pt;
+    font-weight: bold;
+}
+.main_table {
+    alignment: center;
+    width: 1200px;
+    margin: auto;
+    background: #8c8c8c;
+    text-align: center;
+    font-size: 14pt;
+    font-weight: bold;
+    border-radius: 15px;
+}
+.tr_image{
+    height: 200px;
+    vertical-align: bottom;
+}
+.tr_text{
+    height: 50px;
+    vertical-align: top;
+}
+
+.footer {
+    width: auto;
+    height: 40px;
+    background: #989898;
+    text-align: center;
+    font-size: 14pt;
+    font-weight: bold;
+    line-height: 40px;
+}
