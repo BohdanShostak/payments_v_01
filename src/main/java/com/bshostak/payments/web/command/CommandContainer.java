@@ -19,6 +19,9 @@ public class CommandContainer {
 
         // common commands
         commands.put("login", new LoginCommand());
+        commands.put("signUp", new SignUpCommand());
+        commands.put("goToLoginPage", new GoToLoginCommand());
+        commands.put("goToSignupPage", new GoToSignUpCommand());
        //commands.put("logout", new LogoutCommand());
         //commands.put("noCommand", new NoCommand());
         //commands.put("viewSettings", new ViewSettingsCommand());
@@ -26,6 +29,8 @@ public class CommandContainer {
 
         // client commands
         commands.put("listMenu", new ListMenuCommand());
+        commands.put("userMain", new UserMainCommand());
+        commands.put("adminMain", new AdminMainCommand());
 
         // admin commands
         //commands.put("listOrders", new ListOrdersCommand());

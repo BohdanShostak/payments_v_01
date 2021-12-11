@@ -69,10 +69,12 @@ public class LoginCommand extends Command {
             System.out.println("userRole --> " + userRole);// temporary!!!
 
             if (userRole == Role.ADMIN) {
-                forward = Path.COMMAND__LIST_ORDERS;
+                //forward = Path.COMMAND__LIST_ORDERS; // original
+                forward = Path.COMMAND__ADMIN_MAIN_CONTENT; // new
             }
             if (userRole == Role.USER) {
-                forward = Path.COMMAND__LIST_MENU;
+                //forward = Path.COMMAND__LIST_MENU;  // original
+                forward = Path.COMMAND__USER_MAIN_CONTENT;// new
             }
 
             session.setAttribute("user", user);

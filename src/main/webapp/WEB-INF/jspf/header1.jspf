@@ -75,7 +75,7 @@ Header (top area).
 
         <c:if test="${empty user and title ne 'Login'}">
             <div id="rightHeader">
-                <a href="login.jsp">
+                <a href="login1.jsp">
                     <fmt:message key="header_jspf.anchor.login"/>
                 </a>
             </div>

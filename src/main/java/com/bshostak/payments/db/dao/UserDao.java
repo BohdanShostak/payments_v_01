@@ -18,6 +18,8 @@ public class UserDao {
     private static final String SQL__FIND_USER_BY_LOGIN = "SELECT * FROM user WHERE login=?";
     private static final String SQL__FIND_USER_BY_ID = "SELECT * FROM user WHERE id=?";
     private static final String SQL_UPDATE_USER = "UPDATE user SET password=?, first_name=?, second_name=?, email=?, tel=?"+ "	WHERE id=?";
+    private static final String SQL__ADD_USER =
+            "INSERT into `user`(login, `password`, first_name, second_name, email, tel, user_status_id, role_id) values(?, ?, ?, ?, ?, ?, 1, 0)";
 
     /**
      * Returns a user with the given identifier.
@@ -110,6 +112,27 @@ public class UserDao {
      */
     public void updateUser(Connection con, User user) throws SQLException {
         PreparedStatement pstmt = con.prepareStatement(SQL_UPDATE_USER);
+        int k = 1;
+        pstmt.setString(k++, user.getPassword());
+        pstmt.setString(k++, user.getFirstName());
+        pstmt.setString(k++, user.getSecondName());
+        pstmt.setString(k++, user.getEmail());
+        pstmt.setString(k++, user.getTel());
+        pstmt.setLong(k, user.getId());
+        pstmt.executeUpdate();
+        pstmt.close();
+    }
+
+    /**
+     * Update user.
+     *
+     * @param user
+     *            user to update.
+     * @throws SQLException
+     */
+    //test method do it to the end
+    public void addUser(Connection con, User user) throws SQLException {
+        PreparedStatement pstmt = con.prepareStatement(SQL__ADD_USER);
         int k = 1;
         pstmt.setString(k++, user.getPassword());
         pstmt.setString(k++, user.getFirstName());

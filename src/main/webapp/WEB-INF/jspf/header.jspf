@@ -28,13 +28,15 @@ Header (top area).
         </c:if>
 
         <c:if test="${empty user}">
-            <form class="float_right" action="http://localhost:8080/payments_v_01_war_exploded/login1.jsp">
+            <form class="float_right" action="controller" method = "post">
+                <input type="hidden" name="command" value="goToSignupPage"/>
                 <button class="in_line_button" type="submit">
                     <fmt:message key="header_jspf.anchor.sign_up"/>
                 </button>
             </form>
 
-            <form class="float_right" action="http://localhost:8080/payments_v_01_war_exploded/login1.jsp/WEB-INF/jsp/login.jsp">
+            <form class="float_right" action="controller" method="post">
+                <input type="hidden" name="command" value="goToLoginPage"/>
                 <button class="in_line_button" type="submit">
                     <fmt:message key="header_jspf.anchor.login"/>
                 </button>
