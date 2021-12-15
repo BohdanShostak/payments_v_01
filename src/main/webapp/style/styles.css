@@ -23,6 +23,12 @@
     height: 50px;
 }
 
+.in_line_text {
+    font-size: 18pt;
+    color: white;
+    margin: 11px;
+}
+
 .in_line_button {
     font-size: 12pt;
     background: #6b6b6b;
@@ -31,6 +37,7 @@
     margin: 10px;
     border-radius: 10px;
     transition: all 0.3s ease 0s;
+    cursor: pointer;
 }
 
 .in_line_button:hover {
@@ -45,6 +52,7 @@
     margin: 13px;
     border-radius: 10px;
     transition: all 0.3s ease 0s;
+    cursor: pointer;
 }
 
 .language_button:hover {
@@ -111,6 +119,7 @@
     margin: 30px;
     border-radius: 10px;
     transition: all 0.3s ease 0s;
+    cursor: pointer;
 }
 
 .big_button:hover {
@@ -197,6 +206,7 @@
     margin: 5px;
     border-radius: 10px;
     transition: all 0.3s ease 0s;
+    cursor: pointer;
 }
 .standard_button:hover {
     background: #464646;
@@ -210,6 +220,7 @@
     margin: 5px;
     border-radius: 8px;
     transition: all 0.3s ease 0s;
+    cursor: pointer;
 }
 .small_button:hover {
     background: #464646;
@@ -229,6 +240,13 @@
     display: inline-block;
 }
 
+.content_center {
+    background: aquamarine;
+    text-align: center;
+    vertical-align: center;
+}
+
 .test {
     background: brown;
+    margin-top: 0px;
 }

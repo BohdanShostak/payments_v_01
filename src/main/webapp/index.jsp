@@ -17,11 +17,28 @@
                     <fmt:message key="index_jsp.text.motto"/>
                 </h1>
             </div>
-            <form class="alignment_center" action="http://localhost:8080/payments_v_01_war_exploded/">
+
+            <form class="alignment_center" action = "controller" method="post">
+                <c:if test="${empty user}">
+                    <input type="hidden" name="command" value="goToLoginPage"/>
+                </c:if>
+
+                <c:if test="${not empty user}">
+                    <c:choose>
+                        <c:when test="${userRole.name == 'admin' }">
+                            <input type="hidden" name="command" value="adminMain"/>
+                        </c:when>
+                        <c:when test="${userRole.name == 'user'}">
+                            <input type="hidden" name="command" value="userMain"/>
+                        </c:when>
+                    </c:choose>
+                </c:if>
+
                 <button class="big_button" type="submit">
                     <fmt:message key="login_jsp.button.my_account"/>
                 </button>
             </form>
+
         </div>
 
         <div class="right_top">

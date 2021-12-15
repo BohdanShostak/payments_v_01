@@ -9,7 +9,7 @@
 <%@include file="/WEB-INF/jspf/header.jspf"%>
 
 <div class = "main_normal">
-    <h1>This is user main page! Write it to the end</h1>
+    <h1 class="test">This is user main page! Write it to the end</h1>
 </div>
 
 <div class="footer">

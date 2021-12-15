@@ -19,7 +19,8 @@ public class UserDao {
     private static final String SQL__FIND_USER_BY_ID = "SELECT * FROM user WHERE id=?";
     private static final String SQL_UPDATE_USER = "UPDATE user SET password=?, first_name=?, second_name=?, email=?, tel=?"+ "	WHERE id=?";
     private static final String SQL__ADD_USER =
-            "INSERT into `user`(login, `password`, first_name, second_name, email, tel, user_status_id, role_id) values(?, ?, ?, ?, ?, ?, 1, 0)";
+            "INSERT into `user`(login, `password`, first_name, second_name, email, tel, user_status_id, role_id) " +
+                    "values(?, ?, ?, ?, ?, ?, ?, ?)";
 
     /**
      * Returns a user with the given identifier.
@@ -118,9 +119,31 @@ public class UserDao {
         pstmt.setString(k++, user.getSecondName());
         pstmt.setString(k++, user.getEmail());
         pstmt.setString(k++, user.getTel());
-        pstmt.setLong(k, user.getId());
+        pstmt.setLong(k++, user.getUserStatusId());
+        pstmt.setLong(k++, user.getRoleId());
         pstmt.executeUpdate();
         pstmt.close();
+    }
+
+    /**
+     * Add user.
+     *
+     * @param user
+     *            user to update.
+     */
+    public void addUser(User user) {
+        Connection con = null;
+        try {
+            System.out.println("add user1 started"); // test
+            con = DBManager.getInstance().getConnection();
+            addUser(con, user);
+            System.out.println("add user1 finished"); // test
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(con);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(con);
+        }
     }
 
     /**
@@ -132,16 +155,21 @@ public class UserDao {
      */
     //test method do it to the end
     public void addUser(Connection con, User user) throws SQLException {
+        System.out.println("add user2 started"); // test
         PreparedStatement pstmt = con.prepareStatement(SQL__ADD_USER);
         int k = 1;
+        pstmt.setString(k++, user.getLogin());
         pstmt.setString(k++, user.getPassword());
         pstmt.setString(k++, user.getFirstName());
         pstmt.setString(k++, user.getSecondName());
         pstmt.setString(k++, user.getEmail());
         pstmt.setString(k++, user.getTel());
-        pstmt.setLong(k, user.getId());
+        pstmt.setLong(k++, user.getUserStatusId());
+        pstmt.setLong(k, user.getRoleId());
+        System.out.println("all lines added to pstm"); // test
         pstmt.executeUpdate();
         pstmt.close();
+        System.out.println("add user2 finished"); // test
     }
 
     /**

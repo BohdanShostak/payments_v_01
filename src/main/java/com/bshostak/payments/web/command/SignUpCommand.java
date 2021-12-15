@@ -1,6 +1,7 @@
 package com.bshostak.payments.web.command;
 
 import com.bshostak.payments.Path;
+import com.bshostak.payments.db.Role;
 import com.bshostak.payments.db.dao.UserDao;
 import com.bshostak.payments.db.entity.User;
 import jakarta.servlet.ServletException;
@@ -44,6 +45,9 @@ public class SignUpCommand extends Command {
         String tel = request.getParameter("tel");
         System.out.println("Request parameter: tel --> " + tel); // temporary
 
+        int userStatusId = 0;
+        int userRoleId = 1;
+
         // error handler
         String errorMessage = null;
         String forward = Path.PAGE__ERROR_PAGE;
@@ -72,11 +76,46 @@ public class SignUpCommand extends Command {
             return forward;
         }
 
-        // I finished on this place
-        /*User user = new UserDao().addUser();
-        //log.trace("Found in DB: user --> " + user); // do it later!!!
-        System.out.println("Found in DB: user --> " + user);// temporary!!!*/
+        //my code
+        User user = new User();
+        user.setLogin(login);
+        user.setPassword(password);
+        user.setFirstName(firstName);
+        user.setSecondName(secondName);
+        user.setEmail(email);
+        user.setTel(tel);
+        user.setUserStatusId(userStatusId);
+        user.setRoleId(userRoleId);
+        UserDao userDao = new UserDao();
+        userDao.addUser(user);
+        //my code
 
-        return null;
+        Role userRole = Role.getRole(user);
+        //log.trace("userRole --> " + userRole); do it later!!!
+        System.out.println("userRole --> " + userRole);// temporary!!!
+
+        if (userRole == Role.ADMIN) {
+            //forward = Path.COMMAND__LIST_ORDERS; // original
+            forward = Path.COMMAND__ADMIN_MAIN_CONTENT; // new
+        }
+        if (userRole == Role.USER) {
+            //forward = Path.COMMAND__LIST_MENU;  // original
+            forward = Path.COMMAND__USER_MAIN_CONTENT;// new
+        }
+
+        session.setAttribute("user", user);
+        //log.trace("Set the session attribute: user --> " + user); do it later!!!
+        System.out.println("Set the session attribute: user --> " + user); // temporary!!!
+
+        session.setAttribute("userRole", userRole);
+        //log.trace("Set the session attribute: userRole --> " + userRole); do it later!!!
+        System.out.println("Set the session attribute: userRole --> " + userRole);// temporary!!!
+
+        //log.info("User " + user + " logged as " + userRole.toString().toLowerCase()); do it later!!!
+        System.out.println("User " + user + " logged as " + userRole.toString().toLowerCase());// temporary!!!
+
+        //log.debug("Command finished"); do it later!!!
+        System.out.println("Command finished"); //temporary
+        return forward;
     }
 }

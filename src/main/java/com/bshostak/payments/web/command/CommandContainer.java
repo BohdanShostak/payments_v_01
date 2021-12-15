@@ -22,7 +22,7 @@ public class CommandContainer {
         commands.put("signUp", new SignUpCommand());
         commands.put("goToLoginPage", new GoToLoginCommand());
         commands.put("goToSignupPage", new GoToSignUpCommand());
-       //commands.put("logout", new LogoutCommand());
+        commands.put("logout", new LogoutCommand());
         //commands.put("noCommand", new NoCommand());
         //commands.put("viewSettings", new ViewSettingsCommand());
         //commands.put("updateSettings", new UpdateSettingsCommand());
