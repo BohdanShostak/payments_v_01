@@ -170,6 +170,15 @@
     vertical-align: top;
 }
 
+.form_for_buttons {
+    alignment: center;
+    width: fit-content;
+    height: fit-content;
+    min-height: fit-content;
+    margin: auto;
+    text-align: center;
+}
+
 .input_form {
     alignment: center;
     width: 25%;
@@ -244,6 +253,52 @@
     background: aquamarine;
     text-align: center;
     vertical-align: center;
+}
+.menu_main {
+    background: #6b6b6b;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    height: 43px;
+}
+
+.menu_main li {
+display: inline-block;
+}
+
+#user_main #home_button, #user_top_up_balance #top_up_balance_button,
+#user_new_payment #new_payment_button, #user_payments #payments_button,
+#user_accounts #accounts_button, #user_profile #profile_button {
+    font-size: 12pt;
+    color: white;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 10px;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    background: #262626;
+}
+
+.left_part {
+    background: antiquewhite;
+    float: left;
+    width: 50%;
+    min-height: inherit;
+    text-align: center;
+    display: flex;
+}
+
+.right_part {
+    background: gainsboro;
+    float: right;
+    width: 50%;
+}
+
+.whole_space {
+    background: aqua;
+    width: 100%;
+    margin-top: 0px;
+    min-height: calc(100vh - 133px);
 }
 
 .test {

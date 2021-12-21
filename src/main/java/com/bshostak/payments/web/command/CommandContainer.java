@@ -31,6 +31,13 @@ public class CommandContainer {
         commands.put("listMenu", new ListMenuCommand());
         commands.put("userMain", new UserMainCommand());
         commands.put("adminMain", new AdminMainCommand());
+        commands.put("goToTopUpBalance", new GoToTopUpBalanceCommand());
+        commands.put("goToNewPayment", new GoToNewPaymentCommand());
+        commands.put("topUpBalance", new TopUpBalanceCommand());
+        commands.put("newPayment", new NewPaymentCommand());
+        commands.put("payments", new PaymentsCommand());
+        commands.put("accounts", new AccountsCommand());
+        commands.put("goToProfile", new GoToProfileCommand());
 
         // admin commands
         //commands.put("listOrders", new ListOrdersCommand());

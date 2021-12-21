@@ -1,0 +1,65 @@
+<%--===========================================================================
+Header (top area).
+===========================================================================--%>
+
+<%@ page import="com.bshostak.payments.db.Role" %>
+<%@ include file="/WEB-INF/jspf/directive/page.jspf" %>
+<%@ include file="/WEB-INF/jspf/directive/taglib.jspf" %>
+
+<div>
+    <ul class="menu_main">
+        <li>
+            <form action="controller" method = "post">
+                <input type="hidden" name="command" value="userMain"/>
+                <button id = "home_button" class = standard_button type="submit">
+                    <fmt:message key="user_main.main.menu.home"/>
+                </button>
+            </form>
+        </li>
+
+        <li>
+            <form action="controller" method = "post">
+                <input type="hidden" name="command" value="goToTopUpBalance"/>
+                <button id = "top_up_balance_button" class = standard_button type="submit">
+                    <fmt:message key="user_main.main.menu.top_up_balance"/>
+                </button>
+            </form>
+        </li>
+
+        <li>
+            <form action="controller" method = "post">
+                <input type="hidden" name="command" value="goToNewPayment"/>
+                <button id = "new_payment_button" class = standard_button type="submit">
+                    <fmt:message key="user_main.main.menu.new_payment"/>
+                </button>
+            </form>
+        </li>
+
+        <li>
+            <form action="controller" method = "post">
+                <input type="hidden" name="command" value="payments"/>
+                <button id = "payments_button" class = standard_button type="submit">
+                    <fmt:message key="user_main.main.menu.payments"/>
+                </button>
+            </form>
+        </li>
+
+        <li>
+            <form action="controller" method = "post">
+                <input type="hidden" name="command" value="accounts"/>
+                <button id = "accounts_button" class = standard_button type="submit">
+                    <fmt:message key="user_main.main.menu.accounts"/>
+                </button>
+            </form>
+        </li>
+
+        <li>
+            <form action="controller" method = "post">
+                <input type="hidden" name="command" value="goToProfile"/>
+                <button id = "profile_button" class = standard_button type="submit">
+                    <fmt:message key="user_main.main.menu.profile"/>
+                </button>
+            </form>
+        </li>
+    </ul>
+</div>
