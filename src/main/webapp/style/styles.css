@@ -62,6 +62,18 @@
 .float_right {
     float: right;
 }
+.float_left {
+    float: left;
+}
+.text_right {
+    text-align: right;
+    alignment: right;
+}
+
+.text_left {
+    text-align: left;
+    alignment: left;
+}
 
 .main {
     margin-top: -29px;
@@ -87,6 +99,15 @@
     margin-left: auto;
     margin-right: auto;
     min-height: calc(100vh - 90px);
+}
+
+.main_normal_for_forms_and_menu {
+    display: flex;
+    width: 100%;
+    background: #c4c4c4;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: calc(100vh - 133px);
 }
 
 .main_top {
@@ -276,11 +297,16 @@ display: inline-block;
     border-radius: 10px;
     transition: all 0.3s ease 0s;
     cursor: pointer;
-    background: #262626;
+    background: #464646;
+}
+
+.whole_space {
+    width: 100%;
+    margin-top: 0px;
+    min-height: calc(100vh - 133px);
 }
 
 .left_part {
-    background: antiquewhite;
     float: left;
     width: 50%;
     min-height: inherit;
@@ -289,16 +315,55 @@ display: inline-block;
 }
 
 .right_part {
-    background: gainsboro;
+    background: linear-gradient(25deg, #c4c4c4, rgba(0, 75, 128, 0.2));
     float: right;
     width: 50%;
+    text-align: center;
 }
 
-.whole_space {
-    background: aqua;
-    width: 100%;
-    margin-top: 0px;
-    min-height: calc(100vh - 133px);
+.card_container {
+    margin-left: auto;
+    margin-right: auto;
+    width: fit-content;
+    height: fit-content;
+}
+
+.card {
+    padding: 10px 20px;
+    background: -webkit-linear-gradient(#d8c786, #75662a);
+    background: -o-linear-gradient(#d8c786, #75662a);
+    background: -moz-linear-gradient(#d8c786, #75662a);
+    background: linear-gradient(#d8c786, #75662a);
+    width: 450px;
+    height: 284px;
+    border-radius: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.card_text {
+    font-family: "Courier New";
+    text-shadow:
+            1px 1px 1px silver,
+            -1px 1px 1px silver;
+    color: white;
+    font-size: 16pt;
+    font-stretch: ultra-expanded;
+    margin: 5px;
+}
+
+.card_bigger_text {
+    font-family: "Courier New";
+    text-shadow:
+            1px 1px 1px silver,
+            -1px 1px 1px silver;
+    color: white;
+    font-size: 20pt;
+    font-stretch: ultra-expanded;
+}
+
+.margin_bottom_small {
+    margin-bottom: 5px;
 }
 
 .test {

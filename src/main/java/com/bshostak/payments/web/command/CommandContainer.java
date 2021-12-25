@@ -23,6 +23,7 @@ public class CommandContainer {
         commands.put("goToLoginPage", new GoToLoginCommand());
         commands.put("goToSignupPage", new GoToSignUpCommand());
         commands.put("logout", new LogoutCommand());
+        commands.put("switch_language", new SwitchLanguageCommand());
         //commands.put("noCommand", new NoCommand());
         //commands.put("viewSettings", new ViewSettingsCommand());
         //commands.put("updateSettings", new UpdateSettingsCommand());

@@ -17,6 +17,7 @@ public class UserDao {
 
     private static final String SQL__FIND_USER_BY_LOGIN = "SELECT * FROM user WHERE login=?";
     private static final String SQL__FIND_USER_BY_ID = "SELECT * FROM user WHERE id=?";
+    private static final String SQL__FIND_USER_ID_BY_LOGIN = "SELECT id FROM user WHERE login=?";
     private static final String SQL_UPDATE_USER = "UPDATE user SET password=?, first_name=?, second_name=?, email=?, tel=?"+ "	WHERE id=?";
     private static final String SQL__ADD_USER =
             "INSERT into `user`(login, `password`, first_name, second_name, email, tel, user_status_id, role_id) " +
@@ -52,6 +53,8 @@ public class UserDao {
         }
         return user;
     }
+
+
 
     /**
      * Returns a user with the given login.

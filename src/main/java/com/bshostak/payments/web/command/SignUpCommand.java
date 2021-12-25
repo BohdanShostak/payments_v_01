@@ -2,7 +2,11 @@ package com.bshostak.payments.web.command;
 
 import com.bshostak.payments.Path;
 import com.bshostak.payments.db.Role;
+import com.bshostak.payments.db.dao.AccountDao;
+import com.bshostak.payments.db.dao.CardDao;
 import com.bshostak.payments.db.dao.UserDao;
+import com.bshostak.payments.db.entity.Account;
+import com.bshostak.payments.db.entity.Card;
 import com.bshostak.payments.db.entity.User;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -10,6 +14,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.util.List;
 
 public class SignUpCommand extends Command {
     private static final long serialVersionUID = -3066985502123664952L;
@@ -24,8 +29,8 @@ public class SignUpCommand extends Command {
         HttpSession session = request.getSession();
 
         String login = request.getParameter("login");
-        //log.trace("Request parameter: loging --> " + login); // do it later!!!
-        System.out.println("Request parameter: loging --> " + login); // temporary
+        //log.trace("Request parameter: logging --> " + login); // do it later!!!
+        System.out.println("Request parameter: logging --> " + login); // temporary
 
         String password = request.getParameter("password");
         System.out.println("Request parameter: passwording --> " + password); // temporary
@@ -101,6 +106,36 @@ public class SignUpCommand extends Command {
         if (userRole == Role.USER) {
             //forward = Path.COMMAND__LIST_MENU;  // original
             forward = Path.COMMAND__USER_MAIN_CONTENT;// new
+
+            //adding a new account and card;
+            System.out.println("before creating account");
+            Account account = new Account();
+            account.setAccountStatus(0);
+            account.setCreditLimit(5000);
+            account.setSum(0.00);
+            user.setId(userDao.findUserByLogin(user.getLogin()).getId());
+            System.out.println("user id: " + user.getId()); // test
+            account.setUserId(Math.toIntExact(user.getId()));// test
+            //account.setUserId(Math.toIntExact(userDao.findUserByLogin(user.getLogin()).getId()));
+            AccountDao accountDao = new AccountDao();
+            accountDao.addAccount(account);
+
+            System.out.println("before creating card");// test
+            Card card = new Card();
+            card.setCardNumber(new CardDao().getFreeCardNumber());
+            card.setCardName("Standard card");
+            card.setCvv(new CardDao().getRandomCVV());
+            card.setDueDate(new CardDao().getDueDate());
+            List<Account> allAccounts = accountDao.findAccounts(user);
+            System.out.println("allAccounts size: " + allAccounts.size());//test
+            Account account1 = allAccounts.get(0);
+            long accountId = account1.getId();
+            card.setAccountId(Math.toIntExact(accountId));
+            CardDao cardDao = new CardDao();
+            cardDao.addCard(card);
+
+            //session.setAttribute("account", account);
+            //session.setAttribute("card", card);
         }
 
         session.setAttribute("user", user);

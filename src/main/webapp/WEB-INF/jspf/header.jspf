@@ -11,7 +11,8 @@ Header (top area).
     </div>
 
     <div id="right_header">
-        <form class="float_right">
+        <form class="float_right" action="controller" method="post">
+            <input type="hidden" name="command" value="switch_language"/>
             <select class="language_button" name="language">
                 <option value="en">EN</option>
                 <option value="ukr" selected>UKR</option>

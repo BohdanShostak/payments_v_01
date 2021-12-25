@@ -32,9 +32,26 @@
 
         <div class="right_part">
             <div class="card_container">
-                <div class="card">
 
-                </div>
+                    <c:forEach items="${allAccounts}" varStatus="loop">
+                        <div class="card">
+                            <p class=" card_text text_LEFT" >PAYMENTS.UA</p>
+                            <p class="card_text text_left"><c:out value="${allCards.get(loop.index).cardName.toUpperCase()}"/></p>
+                            <p class=" card_text text_right" ><fmt:message key="user_main.card.balance"/>  <c:out value="${allAccounts.get(loop.index).sum} UAN"/></p>
+                            <p class=" card_text text_right"><fmt:message key="user_main.card.credit_limit"/>  <c:out value="${allAccounts.get(loop.index).creditLimit} UAN"/></p>
+                            <p class=" card_text text_right"><fmt:message key="user_main.card.account_number"/>  <c:out value="${allAccounts.get(loop.index).id}"/></p>
+                            <c:set var="number" value="${allCards.get(loop.index).cardNumber}"></c:set>
+                            <p class="card_bigger_text">
+                                <c:out value="${String.valueOf(number).substring(0,4)}
+                                ${String.valueOf(number).substring(4,8)}
+                                ${String.valueOf(number).substring(8,12)}
+                                ${String.valueOf(number).substring(12,16)}"/>
+                            </p>
+                            <p class="card_text text_left"><c:out value="${user.firstName.toUpperCase()} ${user.secondName.toUpperCase()}    ${allCards.get(loop.index).dueDate}"/></p>
+                        </div>
+                    </c:forEach>
+                    <hr>
+
             </div>
 
             <form action="controller" method = "post">
