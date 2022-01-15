@@ -1,6 +1,7 @@
 package com.bshostak.payments.db.entity;
 
-import java.util.Date;
+//import java.util.Date;
+import java.sql.Date;
 
 /**
  * Payment entity.

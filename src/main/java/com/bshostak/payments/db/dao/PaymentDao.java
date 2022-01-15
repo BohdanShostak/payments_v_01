@@ -3,6 +3,7 @@ package com.bshostak.payments.db.dao;
 import com.bshostak.payments.db.DBManager;
 import com.bshostak.payments.db.EntityMapper;
 import com.bshostak.payments.db.Fields;
+import com.bshostak.payments.db.entity.Account;
 import com.bshostak.payments.db.entity.Payment;
 
 import java.sql.*;
@@ -12,7 +13,12 @@ import java.sql.*;
  */
 public class PaymentDao {
     private static final String SQL__FIND_PAYMENT_BY_ID = "SELECT * FROM payment WHERE id=?";
-    private static final String SQL_UPDATE_PAYMENT = "UPDATE payment SET recipient_account=?, recipient_card_number=?, sum=?, date=?, payment_description=?" + "	WHERE id=?";
+    private static final String SQL_UPDATE_PAYMENT = "UPDATE payment SET recipient_account=?, " +
+            "recipient_card_number=?, sum=?, date=?, payment_description=?" + "	WHERE id=?";
+    private static final String SQL__ADD_PAYMENT =
+            "INSERT into `payment`(`recipient_account`, `recipient_card_number`, `sum`, `date`," +
+                    "`payment_description`, `payment_status_id`, `account_id`) " +
+                    "values(?, ?, ?, ?, ?, ?, ?)";
 
     /**
      * Returns a payment with the given identifier.
@@ -79,6 +85,51 @@ public class PaymentDao {
         pstmt.setLong(k, payment.getId());
         pstmt.executeUpdate();
         pstmt.close();
+    }
+
+    /**
+     * Add payment.
+     *
+     * @param payment
+     *            payment to update.
+     */
+    public void addPayment(Payment payment) {
+        Connection con = null;
+        try {
+            System.out.println("add payment1 started"); // test
+            con = DBManager.getInstance().getConnection();
+            addPayment(con, payment);
+            System.out.println("add payment1 finished"); // test
+        } catch (SQLException ex) {
+            DBManager.getInstance().rollbackAndClose(con);
+            ex.printStackTrace();
+        } finally {
+            DBManager.getInstance().commitAndClose(con);
+        }
+    }
+
+    /**
+     * Update payment.
+     *
+     * @param payment
+     *            payment to update.
+     * @throws SQLException
+     */
+    public void addPayment(Connection con, Payment payment) throws SQLException {
+        System.out.println("add payment2 started"); // test
+        PreparedStatement pstmt = con.prepareStatement(SQL__ADD_PAYMENT);
+        int k = 1;
+        pstmt.setInt(k++, payment.getRecipientAccount());
+        pstmt.setLong(k++, payment.getRecipientCardNumber());
+        pstmt.setDouble(k++, payment.getSum());
+        pstmt.setDate(k++, payment.getDate());
+        pstmt.setString(k++, payment.getPaymentDescription());
+        pstmt.setInt(k++, payment.getPaymentStatusId());
+        pstmt.setInt(k, payment.getAccountId());
+        System.out.println("all lines added to pstm"); // test
+        pstmt.executeUpdate();
+        pstmt.close();
+        System.out.println("add payment2 finished"); // test
     }
 
     /**

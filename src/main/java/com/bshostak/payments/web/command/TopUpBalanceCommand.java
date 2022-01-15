@@ -57,10 +57,12 @@ public class TopUpBalanceCommand extends Command {
         double newSum = currentSum + Double.parseDouble(sum);
         account.setSum(newSum);
         accountDao.updateAccount(account);
+        request.setAttribute("sum", sum);
 
         //log.debug("Command finished"); do it later!!!
         System.out.println("Command finished"); //temporary
-        forward = Path.COMMAND__USER_MAIN_CONTENT;
+
+        forward = Path.PAGE__TOP_UP_BALANCE_MESSAGE;
         return forward;
     }
 

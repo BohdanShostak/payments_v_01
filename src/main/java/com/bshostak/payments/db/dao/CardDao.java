@@ -237,15 +237,6 @@ public class CardDao {
         return dueDate;
     }
 
-    /*
-    // testing
-    public static void main(String[] args) {
-        CardDao cardDao = new CardDao();
-        //cardDao.getFreeCardNumber();
-        cardDao.getRandomCVV();
-        cardDao.getDueDate();
-    }
-*/
     /**
      * Extracts card from the result set row.
      */

@@ -9,7 +9,9 @@ import java.io.IOException;
 
 public class GoToNewPaymentCommand extends Command {
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public String execute(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        findMyCards(request, response);
         return Path.PAGE__NEW_PAYMENT;
     }
 }

@@ -228,6 +228,19 @@
     color: #ffffff;
 }
 
+.standard_white_text {
+    font-family: SansSerif, serif;
+    font-size: 18pt;
+    color: #ffffff;
+}
+
+.thin_white_text {
+    font-family: Arial, sans-serif;
+    font-size: 14pt;
+    font-weight: 100;
+    color: #ffffff;
+}
+
 .standard_button {
     font-size: 12pt;
     background: #6b6b6b;
@@ -237,6 +250,7 @@
     border-radius: 10px;
     transition: all 0.3s ease 0s;
     cursor: pointer;
+    min-width: 75px;
 }
 .standard_button:hover {
     background: #464646;
